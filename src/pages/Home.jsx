@@ -14,8 +14,6 @@ const Home = () => {
             try {
                 // Temporarily add a console.log in fetchBlogs:
                 const { data } = await axios.get('http://localhost:5000/api/blogs', { params: { page: currentPage } })
-                console.log('API Response:', data) // Check this in browser console
-                // Add null check for data
                 setBlogs(data?.data || [])
                 setTotalPages(Math.ceil((data?.total || 0) / 10))
             } catch (err) {
@@ -41,25 +39,30 @@ const Home = () => {
                         </div>
                     ) : (
                         <>
-                            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-                                {blogs.map(blog => (
-                                    <BlogCard key={blog._id} blog={blog} />
-                                ))}
-                            </div>
+                            <div className="flex-1 ">
+                                <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                                    {blogs.map(blog => (
+                                        <BlogCard key={blog._id} blog={blog} />
+                                    ))}
+                                </div>
 
-                            <div className="flex justify-center gap-2 mt-8">
-                                {Array.from({ length: totalPages }, (_, i) => (
-                                    <button
-                                        key={i + 1}
-                                        onClick={() => setCurrentPage(i + 1)}
-                                        className={`px-4 py-2 rounded ${currentPage === i + 1
-                                                ? 'bg-indigo-600 text-white'
-                                                : 'bg-gray-200 hover:bg-gray-300'
-                                            }`}
-                                    >
-                                        {i + 1}
-                                    </button>
-                                ))}
+                                {/* Updated pagination container */}
+                                <div className="w-full mt-8">
+                                    <div className="flex justify-center gap-2">
+                                        {Array.from({ length: totalPages }, (_, i) => (
+                                            <button
+                                                key={i + 1}
+                                                onClick={() => setCurrentPage(i + 1)}
+                                                className={`px-4 py-2 rounded ${currentPage === i + 1
+                                                        ? 'bg-indigo-600 text-white'
+                                                        : 'bg-gray-200 hover:bg-gray-300'
+                                                    }`}
+                                            >
+                                                {i + 1}
+                                            </button>
+                                        ))}
+                                    </div>
+                                </div>
                             </div>
                         </>
                     )}

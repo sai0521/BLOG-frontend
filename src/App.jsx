@@ -5,6 +5,7 @@ import Login from './pages/Login'
 import Profile from './pages/Profile'
 import Register from './pages/Register'
 import CreateBlog from './pages/CreateBlog'
+import EditBlog from './pages/EditBlog'
 import BlogDetails from './pages/BlogDetails'
 import MyBlogs from './pages/MyBlogs'
 import { AuthProvider } from './contexts/AuthContext'
@@ -22,6 +23,8 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/create" element={<CreateBlog />} />
           <Route path="/blogs/:id" element={<BlogDetails />} />
+          <Route path="/blogs/:id/edit" element={<EditBlog />} />
+
           <Route path="/my-blogs" element={<MyBlogs />} />
         </Routes>
       </main>

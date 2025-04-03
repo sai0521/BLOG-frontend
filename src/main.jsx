@@ -8,7 +8,15 @@ import './index.css'
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <BrowserRouter>
-      <Toaster position="top-right" />
+      <Toaster position="bottom-right"
+        toastOptions={{
+          duration: 4000,
+          style: {
+            background: '#fff',
+            color: '#374151',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)'
+          }
+        }} />
       <App />
     </BrowserRouter>
   </React.StrictMode>

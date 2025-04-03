@@ -16,7 +16,6 @@ const CreateBlog = () => {
       await axios.post('http://localhost:5000/api/blogs', { 
         title, 
         content,
-        email: user.email
       })
       toast.success('Blog created successfully!')
       navigate('/')
