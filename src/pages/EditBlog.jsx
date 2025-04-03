@@ -15,7 +15,7 @@ const EditBlog = () => {
   useEffect(() => {
     const fetchBlog = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:5000/api/blogs/${id}`)
+        const { data } = await axios.get(`${import.meta.env.VITE_API_URL}blogs/${id}`)
         if (data.data.email !== user?.email) {
           toast.error('You can only edit your own blogs')
           navigate('/')
@@ -34,7 +34,7 @@ const EditBlog = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      await axios.put(`http://localhost:5000/api/blogs/${id}`, { title, content })
+      await axios.put(`${import.meta.env.VITE_API_URL}blogs/${id}`, { title, content })
       toast.success('Blog updated successfully')
       navigate(`/blogs/${id}`)
     } catch (err) {

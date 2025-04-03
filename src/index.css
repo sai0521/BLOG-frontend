@@ -1,21 +1,40 @@
 @import "tailwindcss";
 
-
-.container {
-  @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900 min-h-screen;
+  }
 }
 
-.btn-primary {
-  @apply bg-indigo-600 text-white px-6 py-2 rounded-md hover:bg-indigo-700 transition-colors;
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-6 py-2.5 rounded-full font-medium hover:from-indigo-700 hover:to-purple-700 transition-all duration-300 shadow-sm hover:shadow focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500;
+  }
+
+  .input-field {
+    @apply w-full px-4 py-2.5 border border-gray-200 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 bg-white shadow-sm transition-all duration-200;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100;
+  }
+
+  .heading-gradient {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-purple-600;
+  }
 }
 
-.input-field {
-  @apply w-full p-2 border rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500;
+.Toastify__toast {
+  @apply rounded-lg shadow-lg;
 }
 
 .Toastify__toast-container {
-  bottom: 1rem;
-  right: 1rem;
+  bottom: 1.5rem;
+  right: 1.5rem;
   left: auto;
   top: auto;
 }
